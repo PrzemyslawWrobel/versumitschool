@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.scss";
-import Form from "../../components/Form/Form";
 import List from "../../components/List/List";
+import Form from "../../components/Form/Form";
 
 const initialStateItems = [
     {
@@ -67,7 +67,6 @@ class Root extends React.Component {
             <>
                 <List items={this.state.items} />
                 <Form submitFn={this.addItem} />
-
             </>
 
 
