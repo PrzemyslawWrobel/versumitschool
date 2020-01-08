@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.scss";
-import Modal from "../../components/Modal/Modal";
+import Form from "../../components/Form/Form";
 import List from "../../components/List/List";
 
 const initialStateItems = [
@@ -8,7 +8,6 @@ const initialStateItems = [
         image: "https://randomuser.me/api/portraits/men/17.jpg",
         name: 'Dan Abramov',
         description: 'Working on @reactjs. The demo guy.'
-
     },
     {
         image: "https://randomuser.me/api/portraits/men/15.jpg",
@@ -16,7 +15,7 @@ const initialStateItems = [
         description: 'Making React accessible for users and developers at https://reach.tech . Online learning, workshops, OSS, and consulting.',
     },
     {
-        image: "https://randomuser.me/api/portraits/men/111.jpg",
+        image: "https://randomuser.me/api/portraits/men/13.jpg",
         name: 'Michael Jackson',
         description: 'Maker. Co-author of React Router. Working on @ReactTraining. Created @unpkg. Head over heels for @cari.'
     },
@@ -26,24 +25,21 @@ const initialStateItems = [
         description: 'Making software development more accessible · Husband, Father, Latter-day Saint, Teacher, OSS, GDE, @TC39 · @PayPalEng @eggheadio @FrontendMasters · #JS'
     },
     {
-
         image: "https://randomuser.me/api/portraits/women/81.jpg",
-        title: "LaurenGilbert",
+        name: "LaurenGilbert",
         description: "Sydney, Australia"
-
     },
     {
         image: "https://randomuser.me/api/portraits/men/81.jpg",
-        title: "JacobDaniels",
+        name: "JacobDaniels",
         description: "Chicago, United States"
-
     },
     {
         image: "https://randomuser.me/api/portraits/men/11.jpg",
-        title: "QuercusRobur",
+        name: "QuercusRobur",
         description: "Lorem ipsum dolor"
-
-    }]
+    }
+]
 class Root extends React.Component {
     state = {
         items: [...initialStateItems],
@@ -51,13 +47,26 @@ class Root extends React.Component {
         isModalOpen: false,
     };
 
+    addItem = (e) => {
+        e.preventDefault();
+        const newItem = {
+            name: e.target[0].value,
+            image: e.target[1].value,
+            description: e.target[2].value,
+        }
+
+        this.setState(prevStete => ({
+            items: [...prevStete.items, newItem],
+
+        }));
+        e.target.reset();
+    }
+
     render() {
         return (
             <>
-                <List
-                    items={this.state.items}
-                />
-
+                <List items={this.state.items} />
+                <Form submitFn={this.addItem} />
 
             </>
 

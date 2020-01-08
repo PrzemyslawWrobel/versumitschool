@@ -3,11 +3,11 @@ import React from "react";
 class ListItem extends React.Component {
 
     render() {
-        const { image, title, description } = this.props;
+        const { image, name, description } = this.props;
         return (
             <div className="box">
                 <img src={image} alt="" className="avatar" />
-                <h3 className="box-title">{title}</h3>
+                <h3 className="box-title">{name}</h3>
                 <p className="box-description">{description}</p>
 
                 <div className="button-wrap">
