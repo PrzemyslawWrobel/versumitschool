@@ -4,6 +4,7 @@ class ListItem extends React.Component {
 
     render() {
         const { image, name, description } = this.props;
+
         return (
             <div className="box">
                 <img src={image} alt="" className="avatar" />

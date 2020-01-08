@@ -1,48 +1,27 @@
 import React from "react";
-import "./Form.scss";
+import styles from "./Form.module.scss";
+import Input from "../Input/Input";
 
 const Form = ({ submitFn }) => (
-    <div className="form__wrapper">
+    <div className={styles.wrapper}>
         <h2>Add new User</h2>
-        <form
-            className="form__form"
-            onSubmit={submitFn}
-        >
-            <div className="form__item">
-                <input
-                    type="text"
-                    name="name"
-                    id="name" placeholder=" " maxLength="30"
-                />
-                <label htmlFor="name">Name</label>
-                <div className="forms__item__bar"></div>
-            </div>
+        <form autoComplete="off" className={styles.form} onSubmit={submitFn}>
+            <Input
+                name="name"
+                label="Name"
+                maxLength={30}
+            />
 
-            <div className="form__item">
-                <input
-                    type="text"
-                    name="image"
-                    id="image"
-                    placeholder=" "
-                />
-                <label htmlFor="image">Image</label>
-                <div className="forms__item__bar"></div>
-            </div>
-            <div className="form__item">
-                <textarea
-                    name="description"
-                    id="description"
-                    placeholder=" "
-                />
-                <label htmlFor="description">Description</label>
-                <div className="forms__item__bar"></div>
-            </div>
-            <button
-                className="form__button"
-                type="submit"
-            >
-                add new item
-            </button>
+            <Input
+                name="image"
+                label="Image"
+            />
+            <Input
+                tag="textarea"
+                name="description"
+                label="Description"
+            />
+            <button className={styles.button}>add new item</button>
         </form>
     </div>
 );
